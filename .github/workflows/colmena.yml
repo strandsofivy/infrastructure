@@ -91,6 +91,7 @@ jobs:
           EXTRA_NIX_CONFIG: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             experimental-features = nix-command flakes
+            auto-optimise-store = false
             accept-flake-config = true
             extra-substituters = https://nix-community.cachix.org
             extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
