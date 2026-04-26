@@ -77,6 +77,7 @@ jobs:
           sudo mount -o defaults,noatime,compress=zstd ./nix-store.img /nix
 
       - name: Generate App Token
+        if: ${{ env.USE_ATTIC == 'yes' }}
         id: app-token-generation
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf
         with:
@@ -88,7 +89,6 @@ jobs:
         run: sh .github/workflows/install_lix.sh
         env:
           EXTRA_NIX_CONFIG: |
-            access-tokens = github.com=${{ steps.app-token-generation.outputs.token }}
             experimental-features = nix-command flakes
             accept-flake-config = true
             extra-substituters = https://nix-community.cachix.org
